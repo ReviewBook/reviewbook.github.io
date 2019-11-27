@@ -4,6 +4,7 @@
         <!--https://docs.appfigures.com-->
         <title>ReviewBook</title>
         <meta charset="utf-8">
+        <meta name="google-site-verification" content="-aqlAsrXeLZC_c8aEzlK-3hZ2JqsTCP9-oXpBxCTNuU" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="ReviewBook is an IOS app for people who want to catalog their personal reviews for anything.">
         <meta name="keywords" content="phone,reviews,review,reviewbook,app,journal,catalog,ios">
@@ -13,74 +14,16 @@
         <meta property="og:type" content="product">
         <meta property="og:site_name" content="reviewbook.io">
         <meta property="og:url" content="https://www.reviewbook.io">
-        <meta property="og:image" content="./images/logo">
+        <meta property="og:image" content="/images/logo">
         <meta property="og:image:width" content="721">
         <meta property="og:image:height" content="891">
-        <link rel="shortcut icon" href="./images/logo.png">
-        <link rel="stylesheet" href="./index.css">
+        <link rel="shortcut icon" href="/images/logo.png">
+        <link rel="stylesheet" href="/index.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
         <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     </head>
-    <body>
-        <nav class="navbar" role="navigation" aria-label="main navigation">
-            <div class="navbar-brand">
-                <a class="navbar-item" href="/index.html">
-                    <img src="./images/logo.png" height="28" alt="Logo">
-                </a>
-
-                <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarMenu">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                </a>
-            </div>
-
-            <div id="navbarMenu" class="navbar-menu">
-                <div class="navbar-start">
-                    <a class="navbar-item" href="./index.html">
-                        Home
-                    </a>
-                </div>
-                <div class="navbar-end">
-                    <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link">
-                            Support
-                        </a>
-                        <div class="navbar-dropdown">
-                            <a class="navbar-item">
-                                Contact
-                            </a>
-                            <hr class="navbar-divider">
-                            <a class="navbar-item">
-                                Request a Feature
-                            </a>
-                            <a class="navbar-item">
-                                Report a Bug
-                            </a>
-                        </div>
-                    </div>
-                    <div class="navbar-item has-dropdown is-hoverable">
-                        <a class="navbar-link">
-                            Documents
-                        </a>
-                        <div class="navbar-dropdown">
-                            <a class="navbar-item" href="./docs/about.html">
-                                About
-                            </a>
-                            <a class="navbar-item" href="./docs/faq.html">
-                                FAQs
-                            </a>
-                            <a class="navbar-item" href="./docs/privacy_policy.html">
-                                Privacy Policy
-                            </a>
-                            <a class="navbar-item" href="./docs/terms_conditions.html">
-                                Terms & Condition
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
+    <body onload="load_navbar()">
+        <div id="navbar-placeholder"></div>
         <div class="columns">
             <div class="column" id="left">
                 <div class="hero is-medium is-bold">
@@ -88,7 +31,7 @@
                         <div class="media container">
                             <figure class="media-left">
                                 <p class="image is-64x64">
-                                    <img src="./images/logo.png" alt="Logo">
+                                    <img src="/images/logo.png" alt="Logo">
                                 </p>
                             </figure>
                             <div class="media-content">
@@ -102,7 +45,7 @@
                         </div>
                         <div align="center" id="app-store-container">
                             <a href="https://itunes.apple.com/us/app/sip-stories/id1324722847">
-                                <img src="./images/download-ios.svg">
+                                <img src="/images/download-ios.svg">
                             </a>
                         </div>
                     </div>
@@ -110,7 +53,7 @@
             </div>
             <div class="column" id="right">
                 <div id="app_image_container" class="container">
-                    <img id="app_image" src="./images/iphone_example1.png" alt="App Image">
+                    <img id="app_image" src="/images/iphone_example1.png" alt="App Image">
                 </div>
             </div>
         </div>
@@ -148,9 +91,12 @@
         if (imageCount > maxImages) {
             imageCount = 1;
         }
-        document.getElementById("app_image").src = `./images/iphone_example${imageCount}.png`;
+        document.getElementById("app_image").src = `/images/iphone_example${imageCount}.png`;
         imageCount += 1;
     }
+    function load_navbar(){
+        fetch('/navbar.html')
+            .then(data => data.text())
+            .then(html => document.getElementById('navbar-placeholder').innerHTML = html);
+    }
 </script>
-        
-        

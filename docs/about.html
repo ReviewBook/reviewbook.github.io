@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--https://docs.appfigures.com-->
+        <title>ReviewBook</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="ReviewBook is an IOS app for people who want to catalog their personal reviews for anything.">
+        <meta name="keywords" content="phone,reviews,review,reviewbook,app,journal,catalog,ios">
+        <meta name="author" content="Austin Marino">
+        <meta property="og:description" content="ReviewBook is an IOS app for people who want to catalog their personal reviews for anything.">
+        <meta property="og:title" content="ReviewBook - Your personal review journal">
+        <meta property="og:type" content="product">
+        <meta property="og:site_name" content="reviewbook.io">
+        <meta property="og:url" content="https://www.reviewbook.io">
+        <meta property="og:image" content="/images/logo">
+        <meta property="og:image:width" content="721">
+        <meta property="og:image:height" content="891">
+        <link rel="shortcut icon" href="/images/logo.png">
+        <link rel="stylesheet" href="/index.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+        <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    </head>
+    <body onload="load_navbar()">
+        <div id="navbar-placeholder"></div>
+        <section class="section">
+            <div class="container">
+                <h1 class="title">
+                    About
+                </h1>
+                <h2 class="subtitle">
+                    Info...
+                </h2>
+            </div>
+        </section>
+    </body>
+</html>
+
+<style>
+    body{
+        background: #FFFFFF;
+    }
+    h1{
+        color: black;
+    }
+    h2{
+       color: gainsboro;
+    }
+    .container{
+        text-align: center;
+    }   
+</style>
+
+<script>
+    function load_navbar(){
+        fetch('/navbar.html')
+            .then(data => data.text())
+            .then(html => document.getElementById('navbar-placeholder').innerHTML = html);
+    }
+</script>
