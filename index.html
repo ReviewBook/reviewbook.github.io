@@ -1,49 +1,104 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <!--https://docs.appfigures.com-->
         <title>ReviewBook</title>
         <meta charset="utf-8">
+        <meta name="google-site-verification" content="-aqlAsrXeLZC_c8aEzlK-3hZ2JqsTCP9-oXpBxCTNuU" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Catalog all of your life's experiences in ReviewBook to prevent forgetfulness and second-guessing from getting in the way of living your life to its full potential.">
+        <meta name="keywords" content="ios,iphone,mobile,phone,reviewbook,reviews,review,book,journal,catalog,list,rating,rankings,ranking,app,food,recipe,rank,organize">
         <meta name="author" content="Austin Marino">
-        <meta property="og:title" content="ReviewBook">
+        <meta property="og:description" content="Catalog all of your life's experiences in ReviewBook to prevent forgetfulness and second-guessing from getting in the way of living your life to its full potential.">
+        <meta property="og:title" content="ReviewBook - Your Personal Review Journal">
         <meta property="og:type" content="product">
         <meta property="og:site_name" content="reviewbook.io">
         <meta property="og:url" content="https://www.reviewbook.io">
-        <meta property="og:image" content="./images/logo">
+        <meta property="og:image" content="/images/logo">
         <meta property="og:image:width" content="721">
         <meta property="og:image:height" content="891">
-        <link rel="shortcut icon" href="./images/logo.png">
-        <link rel="stylesheet" href="./index.css">
+        <link rel="shortcut icon" href="/images/logo.png">
+        <link rel="stylesheet" href="/index.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
         <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     </head>
     <body onload="load_navbar()">
         <div id="navbar-placeholder"></div>
-        <section class="hero is-fullheight">
-            <div class="hero-body">
-                <div class="container has-text-centered">
-                    <h1 class="title">
-                        <strong>ReviewBook</strong>
-                    </h1>
-                    <h2 class="subtitle">
-                        More information to come soon...
-                    </h2>
-                    <img src="./images/download-ios.svg">
+        <div class="columns">
+            <div class="column" id="left">
+                <div class="hero is-medium is-bold">
+                    <div class="hero-body">
+                        <div class="media container">
+                            <figure class="media-left">
+                                <p class="image is-64x64">
+                                    <img src="/images/logo.png" alt="Logo">
+                                </p>
+                            </figure>
+                            <div class="media-content">
+                                <div class="title">
+                                    ReviewBook
+                                </div>
+                                <h2 class="subtitle">
+                                    Your Personal Review Journal
+                                </h2>
+                                <p>
+                                    ReviewBook provides users the ability to securely catalog their personal experiences in life, no matter how big or small they might be.
+                                    Never forget how you felt about a drink, book, concert, cruise, or whatever else you desire to look back on.
+                                    We hope that through our app, users will never forget the good, the bad, and everything in between so they know how to navigate the next time the experience presents itself.
+                                </p>
+                            </div>
+                        </div>
+                        <div align="center" id="app-store-container">
+                            <a href="itms-apps://itunes.apple.com/app/id1487760339">
+                                <img src="/images/download-ios.svg">
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
+            <div class="column" id="right">
+                <div id="app_image_container" class="container">
+                    <img id="app_image" src="/images/iphone_example1.png" alt="App Image">
+                </div>
+            </div>
+        </div>
     </body>
 </html>
 
 <style>
     body{
-        background: #FFFFFF;
-        background: -webkit-linear-gradient(bottom, #FFFFFF, #9B7F1D);
-        background: -moz-linear-gradient(bottom, #FFFFFF, #9B7F1D);
-        background: linear-gradient(to top, #FFFFFF, #9B7F1D);
+        background: #F4CB65;
+        background: -webkit-linear-gradient(top left, #F4CB65, #FFFFFF);
+        background: -moz-linear-gradient(top left, #F4CB65, #FFFFFF);
+        background: linear-gradient(to bottom right, #F4CB65, #FFFFFF);
+    }
+    .columns{
+        padding-top: 30px;
+    }
+
+    .column{
+        height: 100% !important;
+    }
+
+    #app_image_container{
+        width: 50%;
+        height: 80%;
+    }
+    #app-store-container{
+        margin-top: 20px;
     }
 </style>
 <script>
+    let maxImages = 5;
+    var imageCount = 1;
+    var imageTimer = setInterval(changeImage ,5000);
+    function changeImage() {
+        if (imageCount > maxImages) {
+            imageCount = 1;
+        }
+        document.getElementById("app_image").src = `/images/iphone_example${imageCount}.png`;
+        imageCount += 1;
+    }
     function load_navbar(){
         fetch('/navbar.html')
             .then(data => data.text())
